@@ -1,0 +1,16 @@
+{
+  "domain": "intelliclima",
+  "name": "IntelliClima ECO2/ECO3 Cloud",
+  "codeowners": [
+    "@meska"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/meska/intelliclima-eco3-ha",
+  "integration_type": "device",
+  "iot_class": "cloud_polling",
+  "requirements": [
+    "pyintelliclima==0.5.0"
+  ],
+  "version": "0.5.0.post1",
+  "issue_tracker": "https://github.com/meska/intelliclima-eco3-ha/issues"
+}

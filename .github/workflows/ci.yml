@@ -1,0 +1,31 @@
+name: tests
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14.7'
+      - run: python -m pip install -r requirements-dev.txt
+      - name: Verify official dependency pins
+        run: |
+          python -m pip check
+          python - <<'PY'
+          import importlib.metadata as m
+          import platform
+          import sys
+          print(platform.platform(), sys.version)
+          expected = {'homeassistant': '2026.10.1', 'pyintelliclima': '0.5.0', 'orjson': '3.11.9'}
+          actual = {name: m.version(name) for name in expected}
+          print(actual)
+          assert actual == expected
+          PY
+      - run: python -X faulthandler -m pytest -q --tb=short -p no:cacheprovider
+      - run: ruff check .
+      - run: ruff format --check .
+      - run: python -m compileall -q custom_components scripts tests
+      - run: python -m pip check

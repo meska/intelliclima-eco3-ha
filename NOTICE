@@ -1,0 +1,11 @@
+IntelliClima ECO2/ECO3 Cloud custom integration
+Derived from Home Assistant Core's IntelliClima integration.
+Home Assistant Core is licensed under Apache License 2.0.
+Upstream authors/contributors retain their respective rights.
+https://github.com/home-assistant/core
+Integration originally maintained by dvdinth and other Home Assistant contributors.
+
+This distribution modifies the integration for ECO3, HA 2026.10.1 compatibility,
+sensor interpretation, identifiers, privacy-safe errors and release packaging.
+No upstream endorsement or trademark rights are implied.
+The separately installed pyintelliclima dependency is not bundled or relicensed.
